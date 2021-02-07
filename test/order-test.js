@@ -190,7 +190,7 @@ describe("order.js", function() {
       assert.deepEqual(deliveryOrders, [order1, order3])
     });
   });
-// ************************************************************************
+
   describe("listItems", function() {
     it("should be a function", function () {
       assert.isFunction(listItems);
@@ -227,7 +227,7 @@ describe("order.js", function() {
       assert.deepEqual(items, "burger, blt sandwich, rueben");
     });
   });
-// ************************************************************************
+
   describe("searchOrder", function() {
     it("should be a function", function () {
       assert.isFunction(searchOrder);

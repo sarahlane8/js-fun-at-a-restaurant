@@ -20,14 +20,24 @@ function listItems(deliveryOrders) {
 }
 
 
+// Full disclosure, I could not get a for loop to work for me with this function.
+//I ended up hard coding it and then working with my mentor on this.  He helped
+//me see the error in my ways! The return placement is very important!!
 
 function searchOrder(deliveryOrders, menuItemName) {
-  if (deliveryOrders[0].item || deliveryOrders[1].item === menuItemName) {
-    return true;
-  } else {
-    return false;
-  };
+  for (var i =0; i < deliveryOrders.length; i++) {
+    var itemName = deliveryOrders[i].item;
+    if (itemName === menuItemName) {
+      return true;
+    }
+  }
+  return false;
 }
+
+
+
+
+
 
 
 

@@ -1,6 +1,6 @@
 
-function createRestaurant(restaurantName, menus) {
-  pizzaRestaurant = {
+function createRestaurant(restaurantName) {
+  return {
     name: restaurantName,
     menus: {
       breakfast: [],
@@ -8,76 +8,55 @@ function createRestaurant(restaurantName, menus) {
       dinner: [],
       }
     }
-  return pizzaRestaurant;
 };
 
 
-function addMenuItem(name, foodItem) {
-  if (foodItem.type === "breakfast" && !name.menus.breakfast.includes(foodItem)) {
- name.menus.breakfast.push(foodItem);
-} else if (foodItem.type === "lunch" && !name.menus.lunch.includes(foodItem)){
-name.menus.lunch.push(foodItem);
-} else if (foodItem.type === "dinner" && !name.menus.dinner.includes(foodItem)){
-name.menus.dinner.push(foodItem);
-};
+
+
+
+function addMenuItem(restaurant, item) {
+  var menuType = item.type;
+  var hasMenuType = restaurant.menus[menuType];
+
+  if (hasMenuType && !restaurant.menus[menuType].includes(item)) {
+    restaurant.menus[menuType].push(item);
+    return;
+  }
+
+  restaurant.menus[menuType] = [item];
 }
+
+
 
 
 function removeMenuItem(restaurant, menuItem, menuType) {
-console.log(restaurant.menus[menuType].includes(restaurant.menus[menuType]);
+  var menu = restaurant.menus[menuType];
+  var message = `No one is eating our ${menuItem} - it has been removed from the ${menuType} menu!`
+  var errorMessage = `Sorry, we don't sell ${menuItem}, try adding a new recipe!`;
 
+  if (!menu) {
+    return errorMessage
+  };
+
+  var deleteCount = 0;
+
+  for (var i = 0; i < menu.length; i++) {
+    var item = menu[i].name;
+    var shouldDelete = item === menuItem;
+
+    if (shouldDelete) {
+      deleteCount++
+      menu.splice(i, 1);
+    }
+  }
+
+  if (deleteCount === 0) {
+      return errorMessage;
+    }
+  return message;
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//line 206
-// // removeMenuItem(pizzaRestaurant, "Veggie Pizza", "dinner");
-//
-// function removeMenuItem(restName, menuItem, menuType) {
-//   // console.log("1", restName.menus.breakfast);
-//   // console.log("2", restName.menus.lunch);
-//   // console.log("3", restName.menus.dinner);
-// if (restName.menus.breakfast[0].name === menuItem &&
-// (restName.menus.breakfast[0].type) === menuType) {
-//   restName.menus.breakfast.pop();
-//   return "No one is eating our Bacon and Eggs Pizza - it has been removed from the breakfast menu!";
-// } else if (restName.menus.dinner[0].name === "Veggie Pizza") {
-//   restName.menus.dinner.pop();
-//   return "No one is eating our Veggie Pizza - it has been removed from the dinner menu!";
-// } else if (!restName.menus.dinner.includes(menuItem)) {
-//    return "Sorry, we don't sell Mom's Spaghetti, try adding a new recipe!";
-// }
-// };
-
-
-
-//   var arepaRestaurant = createRestaurant("Quiero Arepas");
-//   var error = removeMenuItem(arepaRestaurant, "Mom's Spaghetti", "lunch");
-//
-//   assert.equal(error, "Sorry, we don't sell Mom's Spaghetti, try adding a new recipe!");
 
 
 
