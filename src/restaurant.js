@@ -27,6 +27,19 @@ function addMenuItem(restaurant, item) {
 }
 
 
+// function addMenuItem(restaurant, item) {
+//   var menu = restaurant.menus[item.type];
+//   if (!menu) {
+//     menu = [item];
+//   }
+//   var isOnMenu = menu.includes(item);
+//   if (!isOnMenu) {
+//     menu.push(item);
+//   }
+// }
+
+
+
 
 
 function removeMenuItem(restaurant, menuItem, menuType) {
@@ -55,6 +68,26 @@ function removeMenuItem(restaurant, menuItem, menuType) {
     }
   return message;
 }
+
+
+
+//
+// function removeMenuItem(restaurant, menuItem, menuType) {
+//   var menu = restaurant.menus[menuType];
+//   var successMessage = `No one is eating our ${menuItem} - it has been removed from the ${menuType} menu!`;
+//   var errorMessage = `Sorry, we don't sell ${menuItem}, try adding a new recipe!`;
+//   if (!menu) {
+//     return errorMessage;
+//   }
+//   for (var i = 0; i < menu.length; i++) {
+//     var itemName = menu[i].name;
+//     var shouldDeleteItem = itemName === menuItem;
+//     if (shouldDeleteItem) {
+//       menu.splice(i, 1);
+//       return successMessage;
+//     }
+//   }
+// }
 
 
 
